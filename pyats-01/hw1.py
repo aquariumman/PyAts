@@ -12,7 +12,7 @@ import sys
 import argparse
 from calculation import add, divide
 
-parameters = {'num1': 3, 'num2': 0}
+
 
 class My_test(Testcase):
 
@@ -47,16 +47,12 @@ class My_test(Testcase):
 
 
 if __name__=='__main__':
-    try:
-        parser = argparse.ArgumentParser(description="standalone parser")
-        parser.add_argument('-num1', dest='num1', type=int, required=False)
-        parser.add_argument('-num2', dest='num2', type=int, required=False)
+    parser = argparse.ArgumentParser(description="standalone parser")
+    parser.add_argument('-num1', dest='num1', type=int, required=False, default=3)
+    parser.add_argument('-num2', dest='num2', type=int, required=False, default=0)
 
-        args, unknown= parser.parse_known_args()
+    args, unknown= parser.parse_known_args()
 
-        main(num1=args.num1, num2=args.num2)
+    main(num1=args.num1, num2=args.num2)
 
 
-    except:
-        print("I suppose we haven't received arguments so gona use degault!")
-        main(num1=parameters['num1'], num2=parameters['num2'])
