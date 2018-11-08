@@ -34,6 +34,7 @@ def main(runtime):
     task_2.start()
     task_3.start()
     task_4.start()
+
     all_t=[task_1, task_2, task_3, task_4]
 
     counter = timedelta(seconds=10)
@@ -51,6 +52,21 @@ def main(runtime):
         task_1.join()
         task_2.terminate()
         task_2.join()
+        task_3.terminate()
+        task_3.join()
+        task_4.terminate()
+        task_4.join()
 
         # raise exception
         raise TimeoutError('Not all tasks finished in 5 minutes!')
+
+
+    """
+    Another way of runing this script is next,
+    
+    task_1.start();task_1.wait()
+    task_2.start();task_2.wait()
+    task_3.start();task_3.wait()
+    task_4.start();task_4.wait()
+    
+    """
