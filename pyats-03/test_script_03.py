@@ -3,6 +3,10 @@
 """
 You can run the test with
 
+easypy job_03.py -testbed_file testbed.yaml     --- will run test with default parameters
+
+or
+
 easypy job_03.py -testbed_file testbed.yaml -user_vm  (users' name on vm)  -- there is default value
                                             -ip_vm (vm's ip we are connecting to) -- there is default value
                                             -filename (filename for our file which we will work with) -- there is default value
