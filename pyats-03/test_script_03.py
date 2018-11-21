@@ -81,11 +81,13 @@ class Test(Testcase):
     @test
     def check_file_existense(self, filename, ip_vm, username_vm):
         try:
-            if os.path.exists(f'{self.host_path}/received_from_remotevm_{filename}'):
+            if os.path.exists(f'{self.host_path}/received_from_remotevm_{filename}') and self.vm.execute(f'ls -la /home/pyast/received_from_host_{filename}'):
                 print('*****************************************************************File is received on host comp')
             with FileUtils(testbed=testbed) as futils:
                 if futils.checkfile(f'sftp://{ip_vm}/home/{username_vm}/received_from_host_{filename}'):
                     print('**************************************************************File is received on remote vm')
+                else:
+                    raise Exception
         except:
             print("Something went wrong while checking copied files")
         self.passed('Files are copied correctly')

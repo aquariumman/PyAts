@@ -1,0 +1,3 @@
+testbed:
+ custom:
+  word: 'some_test_word_from_testbed'
